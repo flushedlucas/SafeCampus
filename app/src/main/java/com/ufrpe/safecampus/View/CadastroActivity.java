@@ -1,13 +1,15 @@
-package com.ufrpe.safecampus;
+package com.ufrpe.safecampus.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TipoOcorrenciaActivity extends AppCompatActivity {
+import com.ufrpe.safecampus.R;
+
+public class CadastroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tipo_ocorrencia);
+        setContentView(R.layout.activity_cadastro);
     }
 }

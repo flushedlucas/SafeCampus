@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ufrpe.safecampus.BotaoPanicoActivity">
+    tools:context="com.ufrpe.safecampus.View.BotaoPanicoActivity">
 
+    <ToggleButton
+        android:id="@+id/btnPanico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="78dp" />
 </android.support.constraint.ConstraintLayout>
