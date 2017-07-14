@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegistroActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".CadastroActivity" />
+        <activity android:name=".BotaoPanicoActivity" />
+        <activity android:name=".RelatorioActivity" />
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".TipoOcorrenciaActivity"></activity>
     </application>
 
 </manifest>
