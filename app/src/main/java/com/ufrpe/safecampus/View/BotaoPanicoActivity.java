@@ -16,7 +16,7 @@ public class BotaoPanicoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_botao_panico);
 
-        btnPanico = (Button) findViewById(R.id.btnPanico);
+        btnPanico = (Button) findViewById(R.id.swPanico);
     }
 
     public void ligarModoPanico(View view){

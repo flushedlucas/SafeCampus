@@ -1,8 +1,11 @@
 package com.ufrpe.safecampus.View;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -51,7 +54,7 @@ public class TelaInicialActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            confirmarSaida();
         }
     }
 
@@ -62,8 +65,14 @@ public class TelaInicialActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent changeToPerfil = new Intent(TelaInicialActivity.this, PerfilActivity.class);
+            startActivity(changeToPerfil);
+            finish();
+
         } else if (id == R.id.nav_gallery) {
+            Intent changeToPanico = new Intent(TelaInicialActivity.this, BotaoPanicoActivity.class);
+            startActivity(changeToPanico);
+            finish();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -80,7 +89,11 @@ public class TelaInicialActivity extends AppCompatActivity
         return true;
     }
 
-    public void avancar(View view){}
+    public void avancar(View view){
+        Intent changeToRegistro = new Intent(TelaInicialActivity.this, RegistroActivity.class);
+        TelaInicialActivity.this.startActivity(changeToRegistro);
+        finish();
+    }
 
     public void paraMim(View view){
         etNome.setVisibility(view.GONE);
@@ -90,5 +103,27 @@ public class TelaInicialActivity extends AppCompatActivity
     public void paraOutro(View view){
         etNome.setVisibility(view.VISIBLE);
         etEmail.setVisibility(view.VISIBLE);
+    }
+
+    private void confirmarSaida(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sair");
+        builder.setMessage("Deseja Realmente Sair?");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                Intent sair = new Intent(TelaInicialActivity.this, LoginActivity.class);
+//                TelaInicialActivity.this.startActivity(sair);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Não", null);
+        AlertDialog alerta = builder.create();
+        alerta.show();
+
+    }
+
+    public boolean validarCampos(){
+        return true;
     }
 }
