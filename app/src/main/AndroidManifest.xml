@@ -9,20 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.TelaPrincipalActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.CadastroActivity" />
         <activity android:name=".View.BotaoPanicoActivity" />
         <activity android:name=".View.RelatorioActivity" />
         <activity android:name=".View.PerfilActivity" />
         <activity android:name=".View.TipoOcorrenciaActivity" />
-        <activity android:name=".View.RegistroActivity"></activity>
+        <activity android:name=".View.RegistroActivity" />
+        <activity
+            android:name=".View.TelaInicialActivity"
+            android:label="@string/title_activity_tela_inicial"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
