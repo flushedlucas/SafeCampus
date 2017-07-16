@@ -1,5 +1,6 @@
 package com.ufrpe.safecampus.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,13 @@ public class BotaoPanicoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_botao_panico);
 
         btnPanico = (Button) findViewById(R.id.swPanico);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent voltar = new Intent(BotaoPanicoActivity.this, TelaInicialActivity.class);
+        startActivity(voltar);
+        finish();
     }
 
     public void ligarModoPanico(View view){

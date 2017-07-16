@@ -1,5 +1,6 @@
 package com.ufrpe.safecampus.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,13 @@ public class RegistroActivity extends AppCompatActivity {
         etDescricao = (EditText) findViewById(R.id.etDescricao);
         spnTipoDeOcorrencia = (Spinner) findViewById(R.id.spnTipoDeOcorrencia);
         btnEnviar = (Button) findViewById(R.id.btnEnviar);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent voltar = new Intent(RegistroActivity.this, TelaInicialActivity.class);
+        startActivity(voltar);
+        finish();
     }
 
     public void enviar(View view){}

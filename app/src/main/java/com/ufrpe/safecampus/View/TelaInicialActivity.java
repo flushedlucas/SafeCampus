@@ -74,14 +74,12 @@ public class TelaInicialActivity extends AppCompatActivity
             startActivity(changeToPanico);
             finish();
 
-        } else if (id == R.id.nav_slideshow) {
-
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            Intent changeToRelatorio = new Intent(TelaInicialActivity.this, RelatorioActivity.class);
+            startActivity(changeToRelatorio);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
