@@ -4,20 +4,21 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo_dsu_ufrpe"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.LoginActivity" />
-        <activity android:name=".View.CadastroActivity" />
-        <activity android:name=".View.BotaoPanicoActivity" />
-        <activity android:name=".View.RelatorioActivity" />
-        <activity android:name=".View.PerfilActivity" />
-        <activity android:name=".View.TipoOcorrenciaActivity" />
-        <activity android:name=".View.RegistroActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.CadastroActivity" />
+        <activity android:name=".view.BotaoPanicoActivity" />
+        <activity android:name=".view.RelatorioActivity" />
+        <activity android:name=".view.PerfilActivity" />
+        <activity android:name=".view.TipoOcorrenciaActivity" />
+        <activity android:name=".view.RegistroActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden|adjustPan" />
         <activity
-            android:name=".View.TelaInicialActivity"
+            android:name=".view.TelaInicialActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

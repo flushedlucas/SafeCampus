@@ -1,4 +1,4 @@
-package com.ufrpe.safecampus.View;
+package com.ufrpe.safecampus.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

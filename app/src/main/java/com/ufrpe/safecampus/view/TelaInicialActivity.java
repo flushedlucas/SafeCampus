@@ -1,10 +1,8 @@
-package com.ufrpe.safecampus.View;
+package com.ufrpe.safecampus.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,16 +11,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.ufrpe.safecampus.R;
+import com.ufrpe.safecampus.Session;
+import com.ufrpe.safecampus.controller.Validacao;
 
 public class TelaInicialActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Session session;
     private RadioButton rbParaMim, rbParaOutro;
     private EditText etNome, etEmail;
 
@@ -64,19 +64,21 @@ public class TelaInicialActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.perfil) {
             Intent changeToPerfil = new Intent(TelaInicialActivity.this, PerfilActivity.class);
             startActivity(changeToPerfil);
             finish();
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.panico) {
             Intent changeToPanico = new Intent(TelaInicialActivity.this, BotaoPanicoActivity.class);
             startActivity(changeToPanico);
             finish();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.logout) {
+            //    Intent sair = new Intent(TelaInicialActivity.this, LoginActivity.class);
+//                TelaInicialActivity.this.startActivity(sair);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.relatorio) {
             Intent changeToRelatorio = new Intent(TelaInicialActivity.this, RelatorioActivity.class);
             startActivity(changeToRelatorio);
             finish();
@@ -88,9 +90,17 @@ public class TelaInicialActivity extends AppCompatActivity
     }
 
     public void avancar(View view){
-        Intent changeToRegistro = new Intent(TelaInicialActivity.this, RegistroActivity.class);
-        TelaInicialActivity.this.startActivity(changeToRegistro);
-        finish();
+        if (rbParaOutro.isChecked() && !(etEmail.getText().toString().matches("")) ) {
+            validarEmail();
+        } else {
+//            Bundle bundle = new Bundle();
+//            bundle.putString("nome_vitima", session.getCliente().getNome());
+//            bundle.putString("email_vitima", session.getCliente().getEmail());
+            Intent changeToRegistro = new Intent(TelaInicialActivity.this, RegistroActivity.class);
+            TelaInicialActivity.this.startActivity(changeToRegistro);
+//            changeToRegistro.putExtras(bundle);
+            finish();
+        }
     }
 
     public void paraMim(View view){
@@ -110,8 +120,6 @@ public class TelaInicialActivity extends AppCompatActivity
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                Intent sair = new Intent(TelaInicialActivity.this, LoginActivity.class);
-//                TelaInicialActivity.this.startActivity(sair);
                 finish();
             }
         });
@@ -121,7 +129,38 @@ public class TelaInicialActivity extends AppCompatActivity
 
     }
 
-    public boolean validarCampos(){
-        return true;
+    private void validarEmail(){
+        String email_vitima = etEmail.getText().toString().trim();
+        if (!Validacao.validarEmail(email_vitima, this, etEmail)){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Aviso");
+            builder.setMessage("Este não é um email válido. Deseja Continuar?");
+            builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    avancarTela();
+                }
+            });
+            builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    etEmail.requestFocus();
+                }
+            });
+            AlertDialog alerta = builder.create();
+            alerta.show();
+        } else {
+            avancarTela();
+        }
+    }
+
+    private void avancarTela() {
+        Bundle bundle = new Bundle();
+        bundle.putString("nome_vitima", etNome.getText().toString().trim());
+        bundle.putString("email_vitima", etEmail.getText().toString().trim());
+        Intent changeToRegistro = new Intent(TelaInicialActivity.this, RegistroActivity.class);
+        TelaInicialActivity.this.startActivity(changeToRegistro);
+        changeToRegistro.putExtras(bundle);
+        finish();
     }
 }

@@ -3,24 +3,24 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
+            android:id="@+id/perfil"
+            android:icon="@drawable/icons8_contatos_48"
             android:title="Perfil" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/panico"
+            android:icon="@drawable/icons8_atencao_48"
             android:title="Função Pânico" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:id="@+id/logout"
+            android:icon="@drawable/icons8_logout_arredondado_acima_48"
             android:title="Logout" />
     </group>
 
     <item android:title="Administrador">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:id="@+id/relatorio"
+                android:icon="@drawable/icons8_folha_de_papel_48"
                 android:title="Relatorios" />
         </menu>
     </item>

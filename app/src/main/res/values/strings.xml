@@ -6,4 +6,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    //Avisos
+    <string name="email_vazio">Campo email não pode ser vazio!</string>
+    <string name="senha_vazio">Campo senha não pode ser vazio!</string>
+    <string name="email_senha_invalido">Email ou Senha inválidos!</string>
+    <string name="email_invalido">Email inválidos!</string>
 </resources>

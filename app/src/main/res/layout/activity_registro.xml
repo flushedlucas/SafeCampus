@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ufrpe.safecampus.View.RegistroActivity">
+    tools:context="com.ufrpe.safecampus.view.RegistroActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <RelativeLayout
         android:layout_width="368dp"
@@ -26,26 +38,13 @@
             android:id="@+id/tvDescricao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="73dp"
             android:text="Descrição:"
             android:textAlignment="center"
             android:textSize="24sp"
-            android:layout_below="@+id/tvTitulo"
-            android:layout_alignLeft="@+id/tvTitulo"
-            android:layout_alignStart="@+id/tvTitulo" />
-
-        <EditText
-            android:id="@+id/etDescricao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/tvDescricao"
-            android:layout_alignStart="@+id/tvDescricao"
-            android:layout_below="@+id/tvDescricao"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:layout_alignRight="@+id/tvTitulo"
-            android:layout_alignEnd="@+id/tvTitulo" />
+            android:layout_below="@+id/spnTipoDeOcorrencia"
+            android:layout_alignLeft="@+id/spnTipoDeOcorrencia"
+            android:layout_alignStart="@+id/spnTipoDeOcorrencia"
+            android:layout_marginTop="19dp" />
 
         <Button
             android:id="@+id/btnEnviar"
@@ -62,11 +61,75 @@
             android:id="@+id/spnTipoDeOcorrencia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnEnviar"
-            android:layout_alignEnd="@+id/etDescricao"
-            android:layout_alignLeft="@+id/etDescricao"
-            android:layout_alignRight="@+id/etDescricao"
-            android:layout_alignStart="@+id/etDescricao"
-            android:layout_marginBottom="72dp" />
+            android:layout_marginTop="21dp"
+            android:layout_below="@+id/tvTitulo"
+            android:layout_alignRight="@+id/tvTitulo"
+            android:layout_alignEnd="@+id/tvTitulo"
+            android:layout_alignLeft="@+id/tvTitulo"
+            android:layout_alignStart="@+id/tvTitulo" />
+
+        <include
+            layout="@layout/content_scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/include"
+            android:layout_below="@+id/tvDescricao"
+            android:layout_alignLeft="@+id/tvDescricao"
+            android:layout_alignStart="@+id/tvDescricao"
+            android:layout_marginTop="15dp"
+            android:layout_alignRight="@+id/spnTipoDeOcorrencia"
+            android:layout_alignEnd="@+id/spnTipoDeOcorrencia" />
+
+        <TextView
+            android:id="@+id/tvData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvHora"
+            android:layout_alignBottom="@+id/tvHora"
+            android:layout_toEndOf="@+id/btnEnviar"
+            android:layout_toRightOf="@+id/btnEnviar"
+            android:text="Data"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvHora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Hora"
+            android:textSize="24sp"
+            android:layout_below="@+id/include"
+            android:layout_alignLeft="@+id/include"
+            android:layout_alignStart="@+id/include" />
+
+        <EditText
+            android:id="@+id/etHora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvHora"
+            android:layout_alignStart="@+id/tvHora"
+            android:layout_below="@+id/tvData"
+            android:layout_marginTop="23dp"
+            android:ems="10"
+            android:inputType="time"
+            android:layout_toLeftOf="@+id/btnEnviar"
+            android:layout_toStartOf="@+id/btnEnviar" />
+
+        <EditText
+            android:id="@+id/etData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/etHora"
+            android:layout_alignBottom="@+id/etHora"
+            android:layout_alignLeft="@+id/tvData"
+            android:layout_alignStart="@+id/tvData"
+            android:ems="10"
+            android:inputType="date"
+            tools:layout_editor_absoluteX="-238dp"
+            tools:layout_editor_absoluteY="295dp"
+            android:layout_alignRight="@+id/include"
+            android:layout_alignEnd="@+id/include" />
+
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

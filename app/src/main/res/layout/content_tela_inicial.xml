@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ufrpe.safecampus.View.TelaInicialActivity"
+    tools:context="com.ufrpe.safecampus.view.TelaInicialActivity"
     tools:showIn="@layout/app_bar_tela_inicial"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
@@ -46,6 +46,7 @@
             android:id="@+id/rbParaMim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:duplicateParentState="false"
             android:onClick="paraMim"
             android:text="Para Mim"
