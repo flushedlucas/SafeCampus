@@ -20,7 +20,7 @@ import java.util.Date;
 public class RegistroActivity extends AppCompatActivity {
 
     SimpleDateFormat dataFormat = new SimpleDateFormat("dd-MM-aaaa");
-    SimpleDateFormat horaFormat = new SimpleDateFormat("HH:mm:ss");
+    SimpleDateFormat horaFormat = new SimpleDateFormat("HH:mm");
     private EditText etDescricao, etData, etHora;
     private Spinner spnTipoDeOcorrencia;
     private Button btnEnviar;
@@ -64,11 +64,11 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public void enviar(View view){
-//        Intent telaInicial = getIntent();
-//        Bundle dados = telaInicial.getExtras();
-//
-//        String nome_vitima = dados.get("nome_vitima").toString();
-//        String email_vitima = dados.get("email_vitima").toString();
+        Intent telaInicial = getIntent();
+        Bundle dados = telaInicial.getExtras();
+
+        String nome_vitima = dados.get("nome_vitima").toString();
+        String email_vitima = dados.get("email_vitima").toString();
         String descricao = etDescricao.getText().toString();
         try {
             Date data = dataFormat.parse(etData.getText().toString());
