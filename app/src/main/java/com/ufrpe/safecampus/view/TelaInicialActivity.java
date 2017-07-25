@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.ufrpe.safecampus.R;
-import com.ufrpe.safecampus.Session;
+import com.ufrpe.safecampus.controller.Session;
 import com.ufrpe.safecampus.controller.Validacao;
 
 public class TelaInicialActivity extends AppCompatActivity

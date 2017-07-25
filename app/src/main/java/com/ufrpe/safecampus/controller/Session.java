@@ -1,4 +1,4 @@
-package com.ufrpe.safecampus;
+package com.ufrpe.safecampus.controller;
 
 import com.ufrpe.safecampus.model.Usuário;
 
@@ -10,6 +10,11 @@ public class Session {
 
     private static Session instanciaSessao = new Session();
     private Usuário usuarioLogado;
+    private boolean panico;
+
+    public static Session getInstanciaSessao() {
+        return instanciaSessao;
+    }
 
     public Usuário getUsuarioLogado() {
         return usuarioLogado;
@@ -17,5 +22,13 @@ public class Session {
 
     public void setUsuarioLogado(Usuário usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
+    }
+
+    public boolean getPanico() {
+        return panico;
+    }
+
+    public void setPanico(boolean panico) {
+        this.panico = panico;
     }
 }

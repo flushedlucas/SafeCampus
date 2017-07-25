@@ -1,4 +1,4 @@
-package com.ufrpe.safecampus;
+package com.ufrpe.safecampus.controller;
 
 import android.text.Editable;
 import android.text.TextWatcher;

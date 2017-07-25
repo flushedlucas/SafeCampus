@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.ufrpe.safecampus.Mask;
+import com.ufrpe.safecampus.controller.Mask;
 import com.ufrpe.safecampus.R;
 
 import java.text.ParseException;
@@ -58,9 +58,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent voltar = new Intent(RegistroActivity.this, TelaInicialActivity.class);
-        startActivity(voltar);
-        finish();
+        voltar();
     }
 
     public void enviar(View view){
@@ -81,9 +79,15 @@ public class RegistroActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        voltar();
 
 
 
+    }
 
+    private void voltar() {
+        Intent voltar = new Intent(RegistroActivity.this, TelaInicialActivity.class);
+        startActivity(voltar);
+        finish();
     }
 }
