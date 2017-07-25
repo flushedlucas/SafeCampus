@@ -155,12 +155,18 @@ public class TelaInicialActivity extends AppCompatActivity
     }
 
     private void avancarTela() {
-        Bundle bundle = new Bundle();
-        bundle.putString("nome_vitima", etNome.getText().toString().trim());
-        bundle.putString("email_vitima", etEmail.getText().toString().trim());
-        Intent changeToRegistro = new Intent(TelaInicialActivity.this, RegistroActivity.class);
-        TelaInicialActivity.this.startActivity(changeToRegistro);
-        changeToRegistro.putExtras(bundle);
-        finish();
+        if (rbParaOutro.isChecked()) {
+            Bundle bundle = new Bundle();
+            bundle.putString("nome_vitima", etNome.getText().toString().trim());
+            bundle.putString("email_vitima", etEmail.getText().toString().trim());
+            Intent changeToRegistro = new Intent(TelaInicialActivity.this, RegistroActivity.class);
+            TelaInicialActivity.this.startActivity(changeToRegistro);
+            changeToRegistro.putExtras(bundle);
+            finish();
+        }else {
+            Intent changeToRegistro = new Intent(TelaInicialActivity.this, RegistroActivity.class);
+            TelaInicialActivity.this.startActivity(changeToRegistro);
+            finish();
+        }
     }
 }

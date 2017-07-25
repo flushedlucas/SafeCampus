@@ -14,11 +14,14 @@ public class Ocorrencia {
     private String informacao;
     private String tipo_ocorrencia;
     private String descricao;
-    private Date data_ocorrencia;
-    private LatLng local_ocorrencia;
+//    private Date data_ocorrencia;
+//    private LatLng local_ocorrencia;
+    private String data_ocorrencia;
+    private String local_ocorrencia;
     private String nome_vitima;
     private String email_vitima;
     private Usuário usuario;
+    private String Hora;
 
     public int getId() {
         return id;
@@ -52,19 +55,19 @@ public class Ocorrencia {
         this.descricao = descricao;
     }
 
-    public Date getData_ocorrencia() {
+    public String getData_ocorrencia() {
         return data_ocorrencia;
     }
 
-    public void setData_ocorrencia(Date data_ocorrencia) {
+    public void setData_ocorrencia(String data_ocorrencia) {
         this.data_ocorrencia = data_ocorrencia;
     }
 
-    public LatLng getLocal_ocorrencia() {
+    public String getLocal_ocorrencia() {
         return local_ocorrencia;
     }
 
-    public void setLocal_ocorrencia(LatLng local_ocorrencia) {
+    public void setLocal_ocorrencia(String local_ocorrencia) {
         this.local_ocorrencia = local_ocorrencia;
     }
 
@@ -90,5 +93,13 @@ public class Ocorrencia {
 
     public void setUsuario(Usuário usuario) {
         this.usuario = usuario;
+    }
+
+    public String getHora() {
+        return Hora;
+    }
+
+    public void setHora(String hora) {
+        Hora = hora;
     }
 }

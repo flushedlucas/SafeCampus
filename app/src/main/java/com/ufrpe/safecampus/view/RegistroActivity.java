@@ -1,5 +1,6 @@
 package com.ufrpe.safecampus.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.widget.Spinner;
 
 import com.ufrpe.safecampus.controller.Mask;
 import com.ufrpe.safecampus.R;
+import com.ufrpe.safecampus.controller.RegistroController;
+import com.ufrpe.safecampus.model.Ocorrencia;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +28,7 @@ public class RegistroActivity extends AppCompatActivity {
     private Spinner spnTipoDeOcorrencia;
     private Button btnEnviar;
     private String[] tiposNome = {"Assalto", "Acidente de Carro", "Violencia"};
+    private Context context = RegistroActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,27 +66,45 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public void enviar(View view){
-        Intent telaInicial = getIntent();
-        Bundle dados = telaInicial.getExtras();
 
-        String nome_vitima = dados.get("nome_vitima").toString();
-        String email_vitima = dados.get("email_vitima").toString();
+        Ocorrencia ocorrencia = new Ocorrencia();
         String descricao = etDescricao.getText().toString();
-        try {
-            Date data = dataFormat.parse(etData.getText().toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        try {
-            Date hora = horaFormat.parse(etHora.getText().toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
+        try{
+            Intent telaInicial = getIntent();
+            Bundle dados = telaInicial.getExtras();
+
+            String nome_vitima = dados.get("nome_vitima").toString();
+            String email_vitima = dados.get("email_vitima").toString();
+
+            ocorrencia.setNome_vitima(nome_vitima);
+            ocorrencia.setEmail_vitima(email_vitima);
+        } catch (Exception e){}
+        finally {
+            ocorrencia.setNome_vitima("usuario");
+            ocorrencia.setEmail_vitima("email@usuario");
+        }
+//        try {
+//            Date data = dataFormat.parse(etData.getText().toString());
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            Date hora = horaFormat.parse(etHora.getText().toString());
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+        ocorrencia.setTipo_ocorrencia("para_outro");
+        ocorrencia.setData_ocorrencia(etData.getText().toString());
+        ocorrencia.setDescricao(descricao);
+        ocorrencia.setLocal_ocorrencia("parada de zootecnia");
+        ocorrencia.setHora(etHora.getText().toString());
+
+
+        RegistroController registroController = new RegistroController(this.getApplicationContext());
+        registroController.enviarRegistro(ocorrencia);
         voltar();
-
-
-
     }
 
     private void voltar() {
