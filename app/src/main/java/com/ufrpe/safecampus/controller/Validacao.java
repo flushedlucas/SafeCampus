@@ -96,4 +96,27 @@ public class Validacao {
         return result;
     }
 
+    public static boolean verificavaziosOcorrencia(String descricao, String hora, String data, Context context, EditText etdescricao, EditText ethora, EditText etdata){
+        boolean result;
+
+        if (TextUtils.isEmpty(descricao)) {
+            etdescricao.requestFocus();
+            etdescricao.setError(context.getString(R.string.campo_vazio));
+            result = false;
+        } else if (TextUtils.isEmpty(hora)) {
+            ethora.requestFocus();
+            ethora.setError(context.getString(R.string.campo_vazio));
+            result = false;
+        } else if (TextUtils.isEmpty(data)) {
+            etdata.requestFocus();
+            etdata.setError(context.getString(R.string.campo_vazio));
+            result = false;
+        } else {
+            result = true;
+        }
+
+
+        return result;
+    }
+
 }

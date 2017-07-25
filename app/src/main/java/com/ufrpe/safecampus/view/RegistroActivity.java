@@ -2,6 +2,7 @@ package com.ufrpe.safecampus.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import com.ufrpe.safecampus.controller.Mask;
 import com.ufrpe.safecampus.R;
 import com.ufrpe.safecampus.controller.RegistroController;
+import com.ufrpe.safecampus.controller.Validacao;
 import com.ufrpe.safecampus.model.Ocorrencia;
 
 import java.text.ParseException;
@@ -29,6 +31,7 @@ public class RegistroActivity extends AppCompatActivity {
     private Button btnEnviar;
     private String[] tiposNome = {"Assalto", "Acidente de Carro", "Violencia"};
     private Context context = RegistroActivity.this;
+//    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,25 +68,28 @@ public class RegistroActivity extends AppCompatActivity {
         voltar();
     }
 
-    public void enviar(View view){
+    public void enviar(View view) {
 
         Ocorrencia ocorrencia = new Ocorrencia();
         String descricao = etDescricao.getText().toString();
 
-        try{
-            Intent telaInicial = getIntent();
-            Bundle dados = telaInicial.getExtras();
+        if (Validacao.verificavaziosOcorrencia(descricao, etHora.getText().toString(),
+                etData.getText().toString(), this, etDescricao, etHora, etData)) {
 
-            String nome_vitima = dados.get("nome_vitima").toString();
-            String email_vitima = dados.get("email_vitima").toString();
+            try {
+                Intent telaInicial = getIntent();
+                Bundle dados = telaInicial.getExtras();
 
-            ocorrencia.setNome_vitima(nome_vitima);
-            ocorrencia.setEmail_vitima(email_vitima);
-        } catch (Exception e){}
-        finally {
-            ocorrencia.setNome_vitima("usuario");
-            ocorrencia.setEmail_vitima("email@usuario");
-        }
+                String nome_vitima = dados.get("nome_vitima").toString();
+                String email_vitima = dados.get("email_vitima").toString();
+
+                ocorrencia.setNome_vitima(nome_vitima);
+                ocorrencia.setEmail_vitima(email_vitima);
+            } catch (Exception e) {
+            } finally {
+                ocorrencia.setNome_vitima("usuario");
+                ocorrencia.setEmail_vitima("email@usuario");
+            }
 //        try {
 //            Date data = dataFormat.parse(etData.getText().toString());
 //        } catch (ParseException e) {
@@ -95,16 +101,17 @@ public class RegistroActivity extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 
-        ocorrencia.setTipo_ocorrencia("para_outro");
-        ocorrencia.setData_ocorrencia(etData.getText().toString());
-        ocorrencia.setDescricao(descricao);
-        ocorrencia.setLocal_ocorrencia("parada de zootecnia");
-        ocorrencia.setHora(etHora.getText().toString());
+            ocorrencia.setTipo_ocorrencia("para_outro");
+            ocorrencia.setData_ocorrencia(etData.getText().toString());
+            ocorrencia.setDescricao(descricao);
+            ocorrencia.setLocal_ocorrencia("parada de zootecnia");
+            ocorrencia.setHora(etHora.getText().toString());
 
 
-        RegistroController registroController = new RegistroController(this.getApplicationContext());
-        registroController.enviarRegistro(ocorrencia);
-        voltar();
+            RegistroController registroController = new RegistroController(this.getApplicationContext());
+            registroController.enviarRegistro(ocorrencia);
+            voltar();
+        }
     }
 
     private void voltar() {
