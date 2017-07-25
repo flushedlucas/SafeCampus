@@ -16,6 +16,7 @@ public class BotaoPanicoActivity extends AppCompatActivity {
     private Switch btnPanico;
     private Session session = Session.getInstanciaSessao();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,19 +46,23 @@ public class BotaoPanicoActivity extends AppCompatActivity {
     }
 
     public void modoPanico(View view){
-
         session.setPanico(btnPanico.isChecked());
-
     }
 
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+
         if (keyCode == KeyEvent.KEYCODE_POWER) {
             Toast.makeText(getApplicationContext(), "Volume down!", Toast.LENGTH_SHORT).show();
             return true;
         }
 
         return super.onKeyLongPress(keyCode, event);
+    }
+
+    public void chamarTelaTeste(){
+        Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(login);
     }
 
     @Override
