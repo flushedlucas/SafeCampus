@@ -1,6 +1,6 @@
 package com.ufrpe.safecampus.model;
 
-public class Usuário {
+public class Usuario {
 
     private int id;
     private String login;

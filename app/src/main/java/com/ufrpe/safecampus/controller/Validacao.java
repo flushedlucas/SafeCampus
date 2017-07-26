@@ -119,4 +119,39 @@ public class Validacao {
         return result;
     }
 
+    public static boolean verificavaziosLogin(String email, String senha, Context context, EditText etEmail, EditText etsenha){
+        boolean result;
+
+        if (TextUtils.isEmpty(email)) {
+            etEmail.requestFocus();
+            etEmail.setError(context.getString(R.string.campo_vazio));
+            result = false;
+        } else if (TextUtils.isEmpty(senha)) {
+            etsenha.requestFocus();
+            etsenha.setError(context.getString(R.string.campo_vazio));
+            result = false;
+        } else {
+            result = true;
+        }
+        return result;
+    }
+
+
+    public static boolean tamanhoInválido(String email, String senha, Context context, EditText etEmail, EditText etSenha) {
+        boolean result;
+
+        if (!(email.length() > 3)) {
+            etEmail.requestFocus();
+            etEmail.setError(context.getString(R.string.login_tamanho_invalido));
+            result = false;
+        } else if (!(senha.length() > 2)) {
+            etSenha.requestFocus();
+            etSenha.setError(context.getString(R.string.login_senha_tamanho_invalido));
+            result = false;
+        } else {
+            result = true;
+        }
+
+        return result;
+    }
 }

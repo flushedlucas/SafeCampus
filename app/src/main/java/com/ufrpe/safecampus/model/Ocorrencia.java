@@ -1,9 +1,5 @@
 package com.ufrpe.safecampus.model;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.util.Date;
-
 /**
  * Created by lucas on 17/07/17.
  */
@@ -20,7 +16,7 @@ public class Ocorrencia {
     private String local_ocorrencia;
     private String nome_vitima;
     private String email_vitima;
-    private Usuário usuario;
+    private Usuario usuario;
     private String Hora;
 
     public int getId() {
@@ -87,11 +83,11 @@ public class Ocorrencia {
         this.email_vitima = email_vitima;
     }
 
-    public Usuário getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuário usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

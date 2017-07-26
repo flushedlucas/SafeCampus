@@ -1,10 +1,8 @@
 package com.ufrpe.safecampus.controller;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.ufrpe.safecampus.model.Usuário;
-import com.ufrpe.safecampus.view.BotaoPanicoActivity;
+import com.ufrpe.safecampus.model.Usuario;
 
 /**
  * Created by lucas on 17/07/17.
@@ -13,7 +11,7 @@ import com.ufrpe.safecampus.view.BotaoPanicoActivity;
 public class Session {
 
     private static Session instanciaSessao = new Session();
-    private Usuário usuarioLogado;
+    private Usuario usuarioLogado;
     private boolean panico;
     private int contador;
 
@@ -24,11 +22,11 @@ public class Session {
         return instanciaSessao;
     }
 
-    public Usuário getUsuarioLogado() {
+    public Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
 
-    public void setUsuarioLogado(Usuário usuarioLogado) {
+    public void setUsuarioLogado(Usuario usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
     }
 
