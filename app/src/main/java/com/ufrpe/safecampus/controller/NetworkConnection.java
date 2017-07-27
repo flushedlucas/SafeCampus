@@ -21,7 +21,7 @@ public class NetworkConnection {
         mRequestQueue = getRequestQueue();
     }
 
-    public NetworkConnection getInstance(Context context){
+    public static NetworkConnection getInstance(Context context){
         if (instance == null){
             instance = new NetworkConnection(context.getApplicationContext());
         }
@@ -44,4 +44,5 @@ public class NetworkConnection {
             mRequestQueue.cancelAll(tag);
         }
     }
+
 }
