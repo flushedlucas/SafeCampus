@@ -29,38 +29,6 @@ public class LoginController {
     public LoginController(Context context) { this.context = context; }
 
     public Usuario buscar(final Usuario usuario){
-        RequestQueue queue = Volley.newRequestQueue(this.context);  // this = context
-        StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        // response
-                        Log.d("Response", response);
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // error
-                        Log.d("Error.Response", "Error: " + error.getMessage());
-
-                    }
-                }
-        ) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError
-            {
-                Map<String, String> params = new HashMap<String, String>();
-//                params.put("id", "1");
-//                params.put("nome","jose");
-                params.put("email", usuario.getSenha());
-                params.put("senha", usuario.getSenha()  );
-                return params;
-            }
-        };
-        NetworkConnection.getInstance(context).addRequestQueue(postRequest);
         return usuario;
     }
 }
