@@ -1,8 +1,12 @@
 package com.ufrpe.safecampus.controller;
 
+import android.content.Context;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
+
+import com.ufrpe.safecampus.R;
 
 
 public abstract class Mask {
@@ -56,4 +60,6 @@ public abstract class Mask {
             }
         };
     }
+
+
 }

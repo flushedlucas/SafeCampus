@@ -8,6 +8,18 @@ public class Pessoa {
     private String email;
     private String cpf;
 
+    private Usuario usuario;
+
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
     public int getId() {
         return id;
     }
@@ -39,5 +51,7 @@ public class Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+
 
 }

@@ -2,6 +2,7 @@ package com.ufrpe.safecampus.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -57,8 +58,6 @@ public class LoginActivity extends AppCompatActivity {
             Usuario logarTest = loginController.buscar(login, senha);
             if (logarTest != null) {
                 session.setUsuarioLogado(logarTest);
-                System.out.println(logarTest.getLogin());
-                System.out.println(session.getUsuarioLogado().getLogin());
                 Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaInicialActivity.class);
                 LoginActivity.this.startActivity(changeToTelaPrincipal);
                 Toast.makeText(this, "Bem-Vindo - " + session.getUsuarioLogado().getLogin(), Toast.LENGTH_SHORT).show();
@@ -68,6 +67,13 @@ public class LoginActivity extends AppCompatActivity {
         }
 //    }
 
+    @NonNull
+    private Usuario getUsuario(String email, String senha) {
+        Usuario usuario = new Usuario();
+        usuario.setLogin(email);
+        usuario.setSenha(senha);
+        return usuario;
+    }
 
 
 //    public void cadastrarUsuario (View view){

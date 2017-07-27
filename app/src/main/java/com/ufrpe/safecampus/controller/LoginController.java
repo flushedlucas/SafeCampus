@@ -9,6 +9,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.ufrpe.safecampus.model.Usuario;
+import com.ufrpe.safecampus.view.LoginActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;

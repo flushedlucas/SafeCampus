@@ -46,8 +46,8 @@ public class RegistroController {
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("nome", "testeapp");
-                params.put("email", "teste@app.com");
+                params.put("nome", ocorrencia.getNome_vitima());
+                params.put("email", ocorrencia.getEmail_vitima());
                 params.put("local", ocorrencia.getLocal_ocorrencia());
                 params.put("descricao", ocorrencia.getDescricao());
                 params.put("data", ocorrencia.getData_ocorrencia());

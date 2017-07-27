@@ -9,8 +9,6 @@ import com.ufrpe.safecampus.R;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
 public class Validacao {
 
     private static final int[] weightCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
@@ -150,6 +148,33 @@ public class Validacao {
             result = false;
         } else {
             result = true;
+        }
+
+        return result;
+    }
+    //Validações da tela de Login e Cadastro de Usuario
+    public static boolean verificaVazios(String nome, String email,String login,  String senha, Context context,EditText edtNome, EditText etEmail,EditText edtLogin, EditText etSenha) {
+
+        boolean result;
+        if (TextUtils.isEmpty(nome)) {
+            edtNome.requestFocus();
+            edtNome.setError(context.getString(R.string.nome_invalido));
+            result = true;
+        }
+        else if (TextUtils.isEmpty(email)) {
+            etEmail.requestFocus();
+            etEmail.setError(context.getString(R.string.email_vazio));
+            result = true;
+        }else if (TextUtils.isEmpty(login)) {
+            edtLogin.requestFocus();
+            edtLogin.setError(context.getString(R.string.login_invalido));
+            result = true;
+        }else if (TextUtils.isEmpty(senha)) {
+            etSenha.requestFocus();
+            etSenha.setError(context.getString(R.string.senha_vazio));
+            result = true;
+        } else {
+            result = false;
         }
 
         return result;
