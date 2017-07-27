@@ -15,6 +15,8 @@ import com.ufrpe.safecampus.controller.Session;
 import com.ufrpe.safecampus.controller.Validacao;
 import com.ufrpe.safecampus.model.Usuario;
 
+import org.json.JSONException;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Session session = Session.getInstanciaSessao();
@@ -45,16 +47,18 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loginUsuario(View view){
 
-        if (validarCampos()) {
-            String email = etEmail.getText().toString().trim();
+//        if (validarCampos()) {
+            String login = etEmail.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();
 
             LoginController loginController = new LoginController(context);
 
-            Usuario logarTest = loginController.buscar(email, senha);
-
+//            Usuario logarTest = new Usuario();
+            Usuario logarTest = loginController.buscar(login, senha);
             if (logarTest != null) {
                 session.setUsuarioLogado(logarTest);
+                System.out.println(logarTest.getLogin());
+                System.out.println(session.getUsuarioLogado().getLogin());
                 Intent changeToTelaPrincipal = new Intent(LoginActivity.this, TelaInicialActivity.class);
                 LoginActivity.this.startActivity(changeToTelaPrincipal);
                 Toast.makeText(this, "Bem-Vindo - " + session.getUsuarioLogado().getLogin(), Toast.LENGTH_SHORT).show();
@@ -62,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, R.string.email_senha_invalido, Toast.LENGTH_SHORT).show();                }
         }
-    }
+//    }
 
 
 

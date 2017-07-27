@@ -18,11 +18,12 @@ import android.widget.RadioButton;
 import com.ufrpe.safecampus.R;
 import com.ufrpe.safecampus.controller.Session;
 import com.ufrpe.safecampus.controller.Validacao;
+import com.ufrpe.safecampus.model.Usuario;
 
 public class TelaInicialActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Session session;
+    private Session session = Session.getInstanciaSessao();
     private RadioButton rbParaMim, rbParaOutro;
     private EditText etNome, etEmail;
 
@@ -75,8 +76,10 @@ public class TelaInicialActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.logout) {
-            //    Intent sair = new Intent(TelaInicialActivity.this, LoginActivity.class);
-//                TelaInicialActivity.this.startActivity(sair);
+//                Usuario usuario = new Usuario();
+//                session.setUsuarioLogado(usuario);
+                Intent sair = new Intent(TelaInicialActivity.this, LoginActivity.class);
+                TelaInicialActivity.this.startActivity(sair);
 
         } else if (id == R.id.relatorio) {
             Intent changeToRelatorio = new Intent(TelaInicialActivity.this, RelatorioActivity.class);
