@@ -22,6 +22,8 @@ public class RegistroController {
 
     public RegistroController(Context context) { this.context = context; }
 
+
+
     public void enviarRegistro(final Ocorrencia ocorrencia){
         RequestQueue queue = Volley.newRequestQueue(this.context);  // this = context
         StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
@@ -52,7 +54,7 @@ public class RegistroController {
                 params.put("descricao", ocorrencia.getDescricao());
                 params.put("data", ocorrencia.getData_ocorrencia());
                 params.put("hora", ocorrencia.getHora());
-                params.put("tipo_ocorrencia", "1");
+                params.put("tipo_ocorrencia", "Urgência");
                 params.put("escolher_pessoa", ocorrencia.getTipo_ocorrencia());
 
                 return params;

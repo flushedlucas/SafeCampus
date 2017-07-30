@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ufrpe.safecampus.R;
+import com.ufrpe.safecampus.controller.Hora;
 import com.ufrpe.safecampus.controller.LoginController;
 import com.ufrpe.safecampus.controller.Session;
 import com.ufrpe.safecampus.controller.Validacao;
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = (EditText) findViewById(R.id.etEmail);
         etSenha = (EditText) findViewById(R.id.etSenha);
         etEmail.requestFocus();
+
+
 
 //        TextView recuperaSenha = (TextView) findViewById(R.id.tvRecuperarSenha);
 //        recuperaSenha.setOnClickListener(new View.OnClickListener() {

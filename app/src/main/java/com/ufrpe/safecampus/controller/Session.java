@@ -1,8 +1,13 @@
 package com.ufrpe.safecampus.controller;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.util.Log;
 
+import com.google.android.gms.internal.b;
 import com.ufrpe.safecampus.model.Usuario;
+import com.ufrpe.safecampus.view.BotaoPanicoActivity;
+import com.ufrpe.safecampus.view.RegistroActivity;
 
 /**
  * Created by lucas on 17/07/17.
@@ -14,8 +19,15 @@ public class Session {
     private Usuario usuarioLogado;
     private boolean panico;
     private int contador;
+    private Context context;
 
+    public int getContador() {
+        return contador;
+    }
 
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
 
 
     public static Session getInstanciaSessao() {
@@ -38,6 +50,13 @@ public class Session {
         this.panico = panico;
     }
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
+    public Context getContext() {
+        return context;
+    }
+
     public void setCont(int cont){
         contador = cont+contador;
         //para ver o log tem que abrir Android Monitor
@@ -45,14 +64,17 @@ public class Session {
         while( contador >= 15 ) {
             //chamar o serviço de registra ocorrência
             Log.i(" Mensagem Enviada", "Registrando ocorrência...");
+            BotaoPanicoController botaoPanicoController = new BotaoPanicoController();
+            botaoPanicoController.registrarOcorrencia(getContext());
+            Log.i(" Mensagem Enviada", "Ocorrência  Registrada.");
             contador = 0;
-//            if (horaatual maior que a do else ) {
-//                //limpar contador
-//            } else {
-//                //pegar hora para depois checar
-//            }
+            setPanico(false);
+//            new MediaButtonReceiver();
+            break;
+
         }
     }
+
 
 
 }

@@ -13,10 +13,16 @@ import java.util.Date;
 
 public class Hora {
 
-    public String getDateTime() {
-        SimpleDateFormat simpleFormat = new SimpleDateFormat("HH:mm:ss");
+    public static String getTime() {
+        SimpleDateFormat simpleFormat = new SimpleDateFormat("HH:mm");
         String guardaHora = simpleFormat.format( new Date(System.currentTimeMillis() ) );
         Log.w("Data Atual", guardaHora );
+        return guardaHora;
+    }
+    public static String getDate() {
+        SimpleDateFormat simpleFormat = new SimpleDateFormat("dd MMM yyyy");
+        String guardaHora = simpleFormat.format( new Date(System.currentTimeMillis() ) );
+        Log.w("Hora Atual", guardaHora );
         return guardaHora;
     }
 }
