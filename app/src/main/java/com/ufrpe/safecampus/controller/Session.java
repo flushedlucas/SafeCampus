@@ -64,11 +64,12 @@ public class Session {
         while( contador >= 15 ) {
             //chamar o serviço de registra ocorrência
             Log.i(" Mensagem Enviada", "Registrando ocorrência...");
-            BotaoPanicoController botaoPanicoController = new BotaoPanicoController();
-            botaoPanicoController.registrarOcorrencia(getContext());
+            BotaoPanicoController botaoPanicoController = new BotaoPanicoController(getContext());
+//            botaoPanicoController.registrarOcorrencia(getContext());
+            botaoPanicoController.registrarOcorrencia(this.getContext());
             Log.i(" Mensagem Enviada", "Ocorrência  Registrada.");
             contador = 0;
-            setPanico(false);
+//            setPanico(false);
 //            new MediaButtonReceiver();
             break;
 

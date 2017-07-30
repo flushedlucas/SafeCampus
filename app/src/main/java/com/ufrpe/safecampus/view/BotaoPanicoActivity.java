@@ -25,6 +25,7 @@ public class BotaoPanicoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_botao_panico);
 
         btnPanico = (Switch) findViewById(R.id.swPanico);
+        btnPanico.setChecked(session.getPanico());
     }
 
     @Override
