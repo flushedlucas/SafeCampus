@@ -28,20 +28,39 @@
             android:windowSoftInputMode="adjustResize|stateHidden|adjustPan" />
         <activity
             android:name=".view.TelaInicialActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".view.LoginActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        </activity>
 
         <receiver android:name=".controller.MediaButtonReceiver">
             <intent-filter>
                 <action android:name="android.media.VOLUME_CHANGED_ACTION" />
             </intent-filter>
         </receiver>
+
+        <service android:name=".controller.MinhaFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".controller.MinhaFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".controller.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -78,5 +78,7 @@ public class BotaoPanicoController {
 //        Intent voltar = new Intent(v.getContext(), TelaInicialActivity.class);
 //        context.startActivity(voltar);
 //    }
+
+
 }
 
