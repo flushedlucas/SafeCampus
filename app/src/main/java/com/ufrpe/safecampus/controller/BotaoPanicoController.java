@@ -29,54 +29,13 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
         this.context = context;
     }
 
-    public void registrarOcorrencia(Context context) {
+    public void registrarOcorrencia() {
 
         callConnection();
-        final Ocorrencia ocorrencia = new Ocorrencia();
-        ocorrencia.setTipo_ocorrencia("para_mim");
-        ocorrencia.setData_ocorrencia(Hora.getDate());
-        ocorrencia.setDescricao("Ativação Botão do Pânico");
-        ocorrencia.setLocal_ocorrencia(" NO CEGOE");
-        ocorrencia.setNome_vitima("nome_vitima");
-        ocorrencia.setEmail_vitima("comCoordenadas@vitima");
 
-        ocorrencia.setHora(Hora.getTime());
-        RegistroController registroController = new RegistroController(context);
-        registroController.enviarRegistro(ocorrencia);
-
-//        RequestQueue queue = Volley.newRequestQueue(this.context);
-//        StringRequest postRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Log.d("Response", response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.d("Error.Response", "Error: " + error.getMessage());
-//            }
-//        }){
-//            @Override
-//            protected Map<String, String> getParams(){
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("nome", ocorrencia.getNome_vitima());
-//                params.put("email", ocorrencia.getEmail_vitima());
-//                params.put("local", ocorrencia.getLocal_ocorrencia());
-//                params.put("descricao", ocorrencia.getDescricao());
-//                params.put("data", ocorrencia.getData_ocorrencia());
-//                params.put("hora", ocorrencia.getHora());
-//                params.put("tipo_ocorrencia", "Teste das Coordenadas");
-//                params.put("escolher_pessoa", ocorrencia.getTipo_ocorrencia());
-//                params.put("latitude", lat);
-//                params.put("longitude", lng);
-//
-//                return params;
-//            }
-//        };
-//        queue.add(postRequest);
     }
 
-    private synchronized void callConnection() {
+    private synchronized void callConnection( ) {
         mGoogleApiClient = new GoogleApiClient.Builder(context)
                 .addOnConnectionFailedListener(this)
                 .addConnectionCallbacks(this)
@@ -98,6 +57,21 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
             Log.i("LOG", "longitude: "+l.getLongitude());
             lat = String.valueOf(l.getLatitude());
             lng = String.valueOf(l.getLongitude());
+
+            final Ocorrencia ocorrencia = new Ocorrencia();
+            ocorrencia.setLat(String.valueOf(l.getLatitude()));
+            ocorrencia.setLng(String.valueOf(l.getLongitude()));
+            ocorrencia.setTipo_ocorrencia("para_mim");
+            ocorrencia.setData_ocorrencia(Hora.getDate());
+            ocorrencia.setDescricao("Ativação Botão do Pânico");
+            ocorrencia.setLocal_ocorrencia(lat+ " | "+lng);
+            ocorrencia.setNome_vitima("nome_vitima");
+            ocorrencia.setEmail_vitima("comCoordenadas@vitima");
+            ocorrencia.setLat(lat);
+            ocorrencia.setLng(lng);
+            ocorrencia.setHora(Hora.getTime());
+            RegistroController registroController = new RegistroController(context);
+            registroController.enviarRegistro(ocorrencia);
         }
     }
 

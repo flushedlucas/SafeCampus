@@ -66,7 +66,7 @@ public class Session {
             Log.i(" Mensagem Enviada", "Registrando ocorrência...");
             BotaoPanicoController botaoPanicoController = new BotaoPanicoController(getContext());
 //            botaoPanicoController.registrarOcorrencia(getContext());
-            botaoPanicoController.registrarOcorrencia(this.getContext());
+            botaoPanicoController.registrarOcorrencia();
             Log.i(" Mensagem Enviada", "Ocorrência  Registrada.");
             contador = 0;
 //            setPanico(false);
