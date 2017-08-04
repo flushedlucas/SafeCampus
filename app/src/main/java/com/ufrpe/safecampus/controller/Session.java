@@ -61,7 +61,7 @@ public class Session {
         contador = cont+contador;
         //para ver o log tem que abrir Android Monitor
         Log.i("Contador :", ""+contador);
-        while( contador >= 15 ) {
+        while( contador >= 15 && contador <= 40) {
             //chamar o serviço de registra ocorrência
             Log.i(" Mensagem Enviada", "Registrando ocorrência...");
             BotaoPanicoController botaoPanicoController = new BotaoPanicoController(getContext());

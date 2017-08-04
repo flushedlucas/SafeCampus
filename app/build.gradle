@@ -32,6 +32,7 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.google.firebase:firebase-messaging:9.4.0'
     testCompile 'junit:junit:4.12'
+    compile 'me.drakeet.materialdialog:library:1.2.2'
 }
 
 

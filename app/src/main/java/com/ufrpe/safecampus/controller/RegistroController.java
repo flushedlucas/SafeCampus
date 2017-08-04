@@ -54,7 +54,7 @@ public class RegistroController {
                 params.put("descricao", ocorrencia.getDescricao());
                 params.put("data", ocorrencia.getData_ocorrencia());
                 params.put("hora", ocorrencia.getHora());
-                params.put("tipo_ocorrencia", "Urgência");
+                params.put("tipo_ocorrencia", "Teste na sala");
                 params.put("escolher_pessoa", ocorrencia.getTipo_ocorrencia());
 
                 return params;
