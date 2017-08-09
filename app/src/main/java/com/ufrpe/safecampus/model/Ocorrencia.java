@@ -18,24 +18,24 @@ public class Ocorrencia {
     private String email_vitima;
     private Usuario usuario;
     private String Hora;
-    private String lat;
-    private String lng;
+    private Float lat;
+    private Float lng;
 
-    public String getLat() {
+    public float getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(float lat) {
         this.lat = lat;
     }
 
 
 
-    public String getLng() {
+    public float getLng() {
         return lng;
     }
 
-    public void setLng(String lng) {
+    public void setLng(float lng) {
         this.lng = lng;
     }
 

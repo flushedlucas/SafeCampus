@@ -22,8 +22,8 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
     private Context context;
     private static final String URL = "http://safecampus.pe.hu/rest-api/ocorrencias";
     private GoogleApiClient mGoogleApiClient;
-    private String lat;
-    private String lng;
+    private float lat;
+    private float lng;
 
     public BotaoPanicoController(Context context) {
         this.context = context;
@@ -53,22 +53,21 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
                 .getLastLocation(mGoogleApiClient);
 
         if(l != null){
-            Log.i("LOG", "latitude: "+l.getLatitude());
-            Log.i("LOG", "longitude: "+l.getLongitude());
-            lat = String.valueOf(l.getLatitude());
-            lng = String.valueOf(l.getLongitude());
+
+            lat = Float.parseFloat(String.valueOf(l.getLatitude()));
+            lng = Float.parseFloat(String.valueOf(l.getLongitude()));
+            Log.i("LOG", "latitude: "+ lat);
+            Log.i("LOG", "longitude: "+lng);
 
             final Ocorrencia ocorrencia = new Ocorrencia();
-            ocorrencia.setLat(String.valueOf(l.getLatitude()));
-            ocorrencia.setLng(String.valueOf(l.getLongitude()));
+            ocorrencia.setLat(lat);
+            ocorrencia.setLng(lng);
             ocorrencia.setTipo_ocorrencia("para_mim");
             ocorrencia.setData_ocorrencia(Hora.getDate());
-            ocorrencia.setDescricao("Ativação Botão do Pânico");
+            ocorrencia.setDescricao("Testando a data ");
             ocorrencia.setLocal_ocorrencia(lat+ " | "+lng);
             ocorrencia.setNome_vitima("nome_vitima");
             ocorrencia.setEmail_vitima("comCoordenadas@vitima");
-            ocorrencia.setLat(lat);
-            ocorrencia.setLng(lng);
             ocorrencia.setHora(Hora.getTime());
             RegistroController registroController = new RegistroController(context);
             registroController.enviarRegistro(ocorrencia);
