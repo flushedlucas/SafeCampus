@@ -1,13 +1,9 @@
 package com.ufrpe.safecampus.controller;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.util.Log;
 
-import com.google.android.gms.internal.b;
 import com.ufrpe.safecampus.model.Usuario;
-import com.ufrpe.safecampus.view.BotaoPanicoActivity;
-import com.ufrpe.safecampus.view.RegistroActivity;
 
 /**
  * Created by lucas on 17/07/17.

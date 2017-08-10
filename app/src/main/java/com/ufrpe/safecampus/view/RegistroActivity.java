@@ -2,7 +2,6 @@ package com.ufrpe.safecampus.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,15 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.ufrpe.safecampus.controller.Mask;
 import com.ufrpe.safecampus.R;
+import com.ufrpe.safecampus.controller.Mask;
 import com.ufrpe.safecampus.controller.RegistroController;
 import com.ufrpe.safecampus.controller.Validacao;
 import com.ufrpe.safecampus.model.Ocorrencia;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class RegistroActivity extends AppCompatActivity {
 

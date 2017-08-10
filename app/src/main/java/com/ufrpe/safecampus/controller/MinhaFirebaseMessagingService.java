@@ -26,10 +26,10 @@ public class MinhaFirebaseMessagingService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
 
         String from = remoteMessage.getFrom();
-        Log.d(TAG, "Mensaje recibido de: " + from);
+        Log.d(TAG, "Mensagem recibida de: " + from);
 
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Notificación: " + remoteMessage.getNotification().getBody());
+            Log.d(TAG, "Notificação: " + remoteMessage.getNotification().getBody());
 
             mostrarNotificacion(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
         }

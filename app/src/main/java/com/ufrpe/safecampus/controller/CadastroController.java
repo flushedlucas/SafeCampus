@@ -11,8 +11,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ufrpe.safecampus.model.Pessoa;
-import com.ufrpe.safecampus.model.Usuario;
-import com.ufrpe.safecampus.view.CadastroActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +18,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Queue;
 
 /**
  * Created by wellington on 27/07/17.

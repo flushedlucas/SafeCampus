@@ -1,9 +1,7 @@
 package com.ufrpe.safecampus.controller;
 
-import android.icu.util.Calendar;
 import android.util.Log;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

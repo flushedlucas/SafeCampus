@@ -85,6 +85,5 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
 
     }
 
-
 }
 

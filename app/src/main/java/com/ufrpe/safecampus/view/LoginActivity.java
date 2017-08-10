@@ -2,22 +2,18 @@ package com.ufrpe.safecampus.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ufrpe.safecampus.R;
-import com.ufrpe.safecampus.controller.Hora;
 import com.ufrpe.safecampus.controller.LoginController;
 import com.ufrpe.safecampus.controller.Session;
 import com.ufrpe.safecampus.controller.Validacao;
 import com.ufrpe.safecampus.model.Usuario;
-
-import org.json.JSONException;
 
 public class LoginActivity extends AppCompatActivity {
 
