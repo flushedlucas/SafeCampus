@@ -24,9 +24,8 @@ public class MinhaFirebaseInstanceIdService extends FirebaseInstanceIdService {
         enviarTokenServidor(token);
     }
 
-    private void enviarTokenServidor(String token) {
-        // Enviar token al servidor
-
+    private String enviarTokenServidor(String token) {
+        return token;
     }
 
 }

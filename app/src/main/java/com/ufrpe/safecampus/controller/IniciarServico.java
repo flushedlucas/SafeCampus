@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +40,8 @@ public class IniciarServico extends Service implements  GoogleApiClient.Connecti
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private String TAG = "Informação";
-    private static final String URL = "http://safecampus.pe.hu/rest-api/ocorrencias";
+    private static final String URL = "http://safecampus.pe.hu/rest-api/localizacao";
+    private static String token = FirebaseInstanceId.getInstance().getToken();
 
     public IniciarServico(Context context) {
         this.context = context;
@@ -124,14 +126,9 @@ public class IniciarServico extends Service implements  GoogleApiClient.Connecti
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("nome", lat);
-                params.put("email", lng);
-                params.put("local", lat +" - "+lng);
-                params.put("descricao", lat);
-                params.put("data", lng);
-                params.put("hora", lat);
-                params.put("tipo_ocorrencia", lng);
-                params.put("escolher_pessoa", lat);
+                params.put("latitude", lat);
+                params.put("longitude", lng);
+                params.put("token", token);
                 return params;
             }
         };
