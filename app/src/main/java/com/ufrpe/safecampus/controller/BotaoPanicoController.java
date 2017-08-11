@@ -25,7 +25,7 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
         GoogleApiClient.OnConnectionFailedListener {
 
     private Context context;
-    private static final String URL = "http://safecampus.pe.hu/rest-api/ocorrencias";
+//    private static final String URL = "http://safecampus.pe.hu/rest-api/ocorrencias";
     private GoogleApiClient mGoogleApiClient;
     private float lat;
     private float lng;

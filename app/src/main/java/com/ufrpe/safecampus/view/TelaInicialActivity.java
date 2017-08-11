@@ -42,8 +42,10 @@ public class TelaInicialActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         session.setContext(context);
         createNoGpsDialog();
+//        if (session.getUsuarioLogado().equals("admin"))se usuario logado for segurança habilita
         IniciarServico iniciarServico = new IniciarServico(session.getContext());
         iniciarServico.registrarLocalizacao();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
