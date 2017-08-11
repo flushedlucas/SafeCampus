@@ -29,7 +29,7 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
     private GoogleApiClient mGoogleApiClient;
     private float lat;
     private float lng;
-    private static final String NOT = "http://safecampus.pe.hu/rest-api/notification";
+    private static final String NOT = "http://safecampus.pe.hu/rest-api/notification_team";
     private static final String TAG = "BotaoPanico";
 
     public BotaoPanicoController(Context context) {
