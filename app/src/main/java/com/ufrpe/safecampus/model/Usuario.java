@@ -5,6 +5,7 @@ public class Usuario {
     private int id;
     private String login;
     private String senha;
+    private int Tipo;
 
     public int getId() {
         return id;
@@ -28,5 +29,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(int tipo) {
+        Tipo = tipo;
     }
 }

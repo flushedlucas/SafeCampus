@@ -7,6 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ufrpe.safecampus.model.Usuario;
 
@@ -40,6 +41,7 @@ public class LoginController {
                         usuario.setId(result.getInt("id"));
                         usuario.setLogin(login);
                         usuario.setSenha(senha);
+                        usuario.setTipo(result.getInt("tipoPerfil"));
                         session.setUsuarioLogado(usuario);
 //                        System.out.println(usuario);
                     }
@@ -48,6 +50,7 @@ public class LoginController {
                 }
             }
         }, login, senha);
+
         return session.getUsuarioLogado();
     }
 

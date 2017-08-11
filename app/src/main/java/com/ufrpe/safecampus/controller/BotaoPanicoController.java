@@ -7,6 +7,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -24,6 +29,8 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
     private GoogleApiClient mGoogleApiClient;
     private float lat;
     private float lng;
+    private static final String NOT = "http://safecampus.pe.hu/rest-api/notification";
+    private static final String TAG = "BotaoPanico";
 
     public BotaoPanicoController(Context context) {
         this.context = context;
@@ -32,6 +39,7 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
     public void registrarOcorrencia() {
 
         callConnection();
+        notification();
 
     }
 
@@ -83,6 +91,25 @@ public class BotaoPanicoController implements GoogleApiClient.ConnectionCallback
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.i("LOG", "onConnectionFailed("+connectionResult+")");
 
+    }
+
+
+    public void notification () {
+        RequestQueue queue = Volley.newRequestQueue(this.context);
+
+        StringRequest request = new StringRequest(NOT, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, error.toString());
+            }
+        });
+
+        queue.add(request);
     }
 
 }

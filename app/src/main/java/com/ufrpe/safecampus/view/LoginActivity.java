@@ -5,10 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.ufrpe.safecampus.R;
 import com.ufrpe.safecampus.controller.LoginController;
 import com.ufrpe.safecampus.controller.Session;
@@ -50,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 //        if (validarCampos()) {
             String login = etEmail.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();
-
+            int cont = 0;
             LoginController loginController = new LoginController(context);
 
 //            Usuario logarTest = new Usuario();
@@ -62,7 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Bem-Vindo - " + session.getUsuarioLogado().getLogin(), Toast.LENGTH_SHORT).show();
                 finish();
             } else {
-                Toast.makeText(this, R.string.email_senha_invalido, Toast.LENGTH_SHORT).show();                }
+                Toast.makeText(this, R.string.email_senha_invalido, Toast.LENGTH_SHORT).show();
+            }
         }
 //    }
 

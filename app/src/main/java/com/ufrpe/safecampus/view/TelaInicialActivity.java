@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.ufrpe.safecampus.R;
 import com.ufrpe.safecampus.controller.Session;
 import com.ufrpe.safecampus.controller.Validacao;
@@ -46,6 +47,12 @@ public class TelaInicialActivity extends AppCompatActivity
         rbParaOutro = (RadioButton) findViewById(R.id.rbParaOutro);
         etNome = (EditText) findViewById(R.id.etNome);
         etEmail = (EditText) findViewById(R.id.etEmail);
+
+        if (session.getUsuarioLogado().getTipo() != 1) {
+            FirebaseMessaging.getInstance().subscribeToTopic("alerta");
+        } else {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("alerta");
+        }
     }
 
     @Override
