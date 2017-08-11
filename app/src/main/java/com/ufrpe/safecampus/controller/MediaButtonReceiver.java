@@ -7,6 +7,9 @@ package com.ufrpe.safecampus.controller;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+
+import static com.google.android.gms.wearable.DataMap.TAG;
 
 
 public class MediaButtonReceiver extends BroadcastReceiver {
@@ -14,11 +17,13 @@ public class MediaButtonReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
         Session session = Session.getInstanciaSessao();
         while (session.getPanico()) {
             session.setCont(cont);
             break;
         }
+
 
     }
 

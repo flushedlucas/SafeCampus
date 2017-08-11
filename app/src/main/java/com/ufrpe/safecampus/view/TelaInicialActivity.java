@@ -1,5 +1,7 @@
 package com.ufrpe.safecampus.view;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,15 +19,20 @@ import android.widget.RadioButton;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.ufrpe.safecampus.R;
+import com.ufrpe.safecampus.controller.IniciarServico;
 import com.ufrpe.safecampus.controller.Session;
 import com.ufrpe.safecampus.controller.Validacao;
 
 public class TelaInicialActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener
+
+{
 
     private Session session = Session.getInstanciaSessao();
     private RadioButton rbParaMim, rbParaOutro;
     private EditText etNome, etEmail;
+    private Dialog mNoGpsDialog;
+    Context context =  TelaInicialActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,10 @@ public class TelaInicialActivity extends AppCompatActivity
         setContentView(R.layout.activity_tela_inicial);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        session.setContext(context);
+        createNoGpsDialog();
+        IniciarServico iniciarServico = new IniciarServico(session.getContext());
+        iniciarServico.registrarLocalizacao();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,6 +74,30 @@ public class TelaInicialActivity extends AppCompatActivity
         } else {
             confirmarSaida();
         }
+    }
+    private void createNoGpsDialog(){
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Intent callGPSSettingIntent = new Intent(
+                                android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(callGPSSettingIntent);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        mNoGpsDialog = builder.setMessage("Por favor ative seu GPS para usar esse aplicativo.")
+                .setPositiveButton("Ativar", dialogClickListener)
+                .setNegativeButton("Negativo", dialogClickListener)
+                .create();
+        mNoGpsDialog.show();
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
