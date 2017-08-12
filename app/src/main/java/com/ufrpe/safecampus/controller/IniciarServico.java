@@ -104,37 +104,74 @@ public class IniciarServico extends Service implements  GoogleApiClient.Connecti
 
     private void enviarlocalizacao(final String lat, final String lng) {
         RequestQueue queue = Volley.newRequestQueue(this.context);  // this = context
-        StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        // response
-                        Log.d("Response", response);
+        try {
+            StringRequest postRequest = new StringRequest(Request.Method.POST, URL +"/"+token,
+                    new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response) {
+                            // response
+                            Log.d("Response", response);
+                        }
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // error
+                            Log.d("Error.Response", "Error: " + error.getMessage());
+                        }
                     }
-                },
-                new Response.ErrorListener()
+            ) {
+                @Override
+                protected Map<String, String> getParams()
                 {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // error
-                        Log.d("Error.Response", "Error: " + error.getMessage());
-                    }
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("latitude", lat);
+                    params.put("longitude", lng);
+                    params.put("token", token);
+                    return params;
+
+
                 }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("latitude", lat);
-                params.put("longitude", lng);
-                params.put("token", token);
-                return params;
+            };
+            queue.add(postRequest);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
+                    new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response) {
+                            // response
+                            Log.d("Response", response);
+                        }
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // error
+                            Log.d("Error.Response", "Error: " + error.getMessage());
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("latitude", lat);
+                    params.put("longitude", lng);
+                    params.put("token", token);
+                    return params;
 
 
-            }
-        };
-        queue.add(postRequest);
+                }
+            };
+            queue.add(postRequest);
+        }
     }
 
     @Override
