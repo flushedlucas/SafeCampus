@@ -60,7 +60,7 @@ public class TelaInicialActivity extends AppCompatActivity
         etNome = (EditText) findViewById(R.id.etNome);
         etEmail = (EditText) findViewById(R.id.etEmail);
 
-        if (session.getUsuarioLogado().getTipo() != 1) {
+        if (session.getUsuarioLogado().getTipo() != 4) {
             FirebaseMessaging.getInstance().subscribeToTopic("alerta");
         } else {
             FirebaseMessaging.getInstance().unsubscribeFromTopic("alerta");
