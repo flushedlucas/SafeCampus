@@ -1,8 +1,10 @@
 package com.ufrpe.safecampus.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,11 +18,13 @@ import com.ufrpe.safecampus.controller.RelatorioController;
 
 public class RelatorioActivity extends AppCompatActivity {
 
+    private Context context = RelatorioActivity.this;
     private Spinner spnTipoDeBusca, spnTipoDeOcorrencia;
     private Button btnBuscar;
     private EditText etDataInicio, etDataFim, etNome;
     private String[] tiposNome = {"Assalto", "Acidente de Carro", "Violencia"};
     private String[] tiposBusca = {"Por Data", "Por Nome", "Por Tipo de Ocorrencia"};
+    private String nome, opcao, datainicio, datafim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +54,18 @@ public class RelatorioActivity extends AppCompatActivity {
                     etDataFim.setVisibility(View.VISIBLE);
                     etDataInicio.setVisibility(View.VISIBLE);
 
-                }else if (parent.getItemAtPosition(position).toString().equals("Por Nome")){
+                } else if (parent.getItemAtPosition(position).toString().equals("Por Nome")){
                     etNome.setVisibility(View.VISIBLE);
                     spnTipoDeOcorrencia.setVisibility(View.INVISIBLE);
                     etDataFim.setVisibility(View.INVISIBLE);
                     etDataInicio.setVisibility(View.INVISIBLE);
+
                 } else if (parent.getItemAtPosition(position).toString().equals("Por Tipo de Ocorrencia")){
                     etNome.setVisibility(View.INVISIBLE);
                     spnTipoDeOcorrencia.setVisibility(View.VISIBLE);
                     etDataFim.setVisibility(View.INVISIBLE);
                     etDataInicio.setVisibility(View.INVISIBLE);
+                    opcao = parent.getItemAtPosition(position).toString();
                 }
             }
 
@@ -96,8 +102,26 @@ public class RelatorioActivity extends AppCompatActivity {
 
     public void buscar (View view) {
 
-        RelatorioController relatorioController = new RelatorioController();
-        relatorioController.buscar();
+        RelatorioController relatorioController = new RelatorioController(context);
+
+        if (!TextUtils.isEmpty(etNome.getText().toString())){
+
+            relatorioController.buscar(etNome.getText().toString());
+
+        } else if (!TextUtils.isEmpty(etDataFim.getText().toString()) && TextUtils.isEmpty(etDataInicio.getText().toString())){
+
+            relatorioController.buscar(etDataInicio.getText().toString(), etDataFim.getText().toString());
+
+        } else if (!TextUtils.isEmpty(opcao)) {
+
+            relatorioController.buscar(opcao, true);
+
+        } else {
+
+            relatorioController.buscar();
+
+        }
+
 
     }
 }
