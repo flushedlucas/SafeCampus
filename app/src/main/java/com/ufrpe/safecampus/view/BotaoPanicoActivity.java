@@ -65,12 +65,12 @@ public class BotaoPanicoActivity extends AppCompatActivity {
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        mNoGpsDialog = builder.setMessage("Por favor ative seu GPS para usar esse aplicativo.")
-                .setPositiveButton("Ativar", dialogClickListener)
-                .setNegativeButton("Negativo", dialogClickListener)
-                .create();
-        mNoGpsDialog.show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        mNoGpsDialog = builder.setMessage("Por favor ative seu GPS para usar esse aplicativo.")
+//                .setPositiveButton("Ativar", dialogClickListener)
+//                .setNegativeButton("Negativo", dialogClickListener)
+//                .create();
+//        mNoGpsDialog.show();
 
     }
 

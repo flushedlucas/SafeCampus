@@ -16,6 +16,7 @@ public class Session {
     private boolean panico;
     private int contador;
     private Context context;
+    private int contadorAtivaGPS;
 
     public int getContador() {
         return contador;
@@ -25,6 +26,13 @@ public class Session {
         this.contador = contador;
     }
 
+    public int getContadorAtivaGPS() {
+        return contadorAtivaGPS;
+    }
+
+    public void setContadorAtivaGPS(int contadorAtivaGPS) {
+        this.contadorAtivaGPS = contadorAtivaGPS;
+    }
 
     public static Session getInstanciaSessao() {
         return instanciaSessao;
