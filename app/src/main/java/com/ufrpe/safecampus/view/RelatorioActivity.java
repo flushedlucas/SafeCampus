@@ -97,7 +97,7 @@ public class RelatorioActivity extends AppCompatActivity {
     public void buscar (View view) {
 
         RelatorioController relatorioController = new RelatorioController();
-        relatorioController.buscar();
+    //        relatorioController.buscar();
 
     }
 }
